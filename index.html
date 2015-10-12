@@ -83,7 +83,7 @@
                 padding-bottom:5px;
             }
             
-            .newsletter{
+            .newsletter, .articles .row:last-child{
                 margin-bottom:15px;
             }
             
@@ -122,7 +122,7 @@
                 </div>
                 
                 <div style="float:right;position:absolute;right:6px;top:6px;">
-                    Login | Archives
+                    <a href="#signIn"  data-toggle="modal" data-target="#signInModal">Login</a> | Archives
                 </div>
             </div>
         </div>
@@ -172,6 +172,25 @@
         <div id="global_footer" class="row">
             <div class="container">
                 Filler content © Valve Corporation. All rights reserved.
+            </div>
+        </div>
+        
+        <div class="modal fade" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="signInModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Log In</h4>
+                    </div>
+                    <div class="modal-body">
+                        <input type="text" class="form-control" placeholder="username">
+                        <input type="password" class="form-control" placeholder="password">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Sign In</button>
+                    </div>
+                </div>
             </div>
         </div>
     </body>
