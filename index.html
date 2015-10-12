@@ -4,28 +4,13 @@
         <title>Best of Steam Community Forums</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
         
-        <script>
-            $(document).ready(function(){
-                append_data('articles','article',5);
-                append_data('viewed','article',Math.floor((Math.random() * 5) + 1));
-                append_data('commented','article',Math.floor((Math.random() * 5) + 1));
-                append_data('shared','article',Math.floor((Math.random() * 5) + 1));
-                append_data('newsletter','news',3);
-            });
-            
-            function append_data(name,type,integer){
-                for(i=1;i<(integer+1);i++){
-                    $('.'+name).append('<div class="row"><div id="'+name+'0'+i+'"></div></div>');
-                    $('#'+name+'0'+i).load('dummy_pages/'+type+'0'+i+'.html');
-                }
-            }
-        </script>
         <style>
             body{
                 background-color:#1b2838;
@@ -36,72 +21,44 @@
                 font-family:Arial,Helvetica,Verdana,sans-serif;
             }
             
-            #global_header,#global_footer{
-                background-color:#171a21;
-            }
-            
-            #global_header .container,#global_footer{
-                height:100px;
-            }
-            
-            #steam_logo{
+            #global_header img{
+                padding:30px 10px 0px 0px;
                 float:left;
-                padding-right:10px;
-            }
-            
-            #steam_logo{
-                padding-top:36px;
             }
             
             #logo_addon{
+                padding-top:31px;
                 font-weight:bold;
-                padding-top:38px;
+                font-size:17px;
             }
             
-            #top_content{
-                margin-top:15px;
+            #eyebrow{
+                float:right;
+                position:absolute;
+                right:12px;
+                top:6px;
             }
             
-            .tab-pane .row{
-                padding-top:15px;
-                padding-bottom:15px;
-                margin-right:0px;
-                margin-left:0px;
-                font-size:14px;
+            #global_header,#global_footer{
+                background-color:#171a21;
+                height:104px;
             }
             
-            .articles .row:last-child{
-                margin-bottom:15px;
+            #global_footer{
+                text-align:center;
+                padding:40px;
             }
             
-            .tab-pane .row:nth-child(even),.newsletter .row:nth-child(even){
+            .content div:nth-child(even){
                 background-color:rgba(84, 133, 183, 0.2);
             }
             
-            .articles span{
-                padding-top:5px;
-                padding-bottom:5px;
+            .content div{
+                margin:5px 0 5px 0;
             }
             
-            .newsletter, .articles .row:last-child{
-                margin-bottom:15px;
-            }
-            
-            .news_article{
-                padding:30px 30px 30px 30px;
-            }
-            
-            #global_footer .container{
-                padding-top:38px;
-                text-align:center;
-            }
-            
-            hr{
-                margin-top:11px;
-            }
-            
-            .article_info{
-                margin-bottom:5px;
+            .nav-tabs{
+                padding-top:25px;
             }
             
             blockquote{
@@ -109,69 +66,102 @@
                 font-style:italic;
                 font-size:14px;
             }
-            
         </style>
+        
+        <script>
+            $(document).ready(function(){
+                append_data('articles','article',5);
+                append_data('viewed','article',Math.floor((Math.random() * 5) + 1));
+                append_data('commented','article',Math.floor((Math.random() * 5) + 1));
+                append_data('shared','article',Math.floor((Math.random() * 5) + 1));
+                append_data('newsletters','news',3);
+            });
+            
+            function append_data(name,type,integer){
+                for(i=1;i<(integer+1);i++){
+                    $('.'+name).append('<div class="row"><div class="'+name+'0'+i+'"></div></div>');
+                    $('.'+name+'0'+i).load('dummy_pages/'+type+'0'+i+'.html');
+                }
+            }
+        </script>
     </head>
-    <body class="col-lg-12">
-        <div id="global_header" class="row">
-            <div class="container">
-                <a href=''><img id="steam_logo" src="http://steamcommunity-a.akamaihd.net/public/images/header/globalheader_logo.png"></a>
-                
-                <div id="logo_addon">
-                    BEST OF COMMUNITY FORUMS
-                </div>
-                
-                <div style="float:right;position:absolute;right:6px;top:6px;">
-                    <a href="#signIn"  data-toggle="modal" data-target="#signInModal">Login</a> | Archives
-                </div>
-            </div>
-        </div>
-        
-        <div class="container" id="top_content">
-            <div class="col-lg-8">
-                <ul class="nav nav-tabs" role="tablist">
-                  <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
-                  <li role="presentation"><a href="#viewed" aria-controls="viewed" role="tab" data-toggle="tab">Most Viewed</a></li>
-                  <li role="presentation"><a href="#commented" aria-controls="commented" role="tab" data-toggle="tab">Most Commented</a></li>
-                  <li role="presentation"><a href="#shared" aria-controls="shared" role="tab" data-toggle="tab">Most Shared</a></li>
-                </ul>
-
-                <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane active" id="home">
-                        <div class="articles">
-                        </div>
-                    </div>
-
-                    <div role="tabpanel" class="tab-pane" id="viewed">
-                        <div class="viewed">
-                            
-                        </div>
-                    </div>
-
-                    <div role="tabpanel" class="tab-pane" id="commented">
-                        <div class="commented">
-                            
-                        </div>
-                    </div>
-
-                    <div role="tabpanel" class="tab-pane" id="shared">
-                        <div class='shared'>
-                            
+    <body>
+        <div class="col-lg-12">
+            <div id="global_header" class="row" style="">
+                <div class="container">
+                    <div class="col-lg-12">
+                        <a href=''><img src="http://steamcommunity-a.akamaihd.net/public/images/header/globalheader_logo.png"></a>
+                        
+                        <div id="logo_addon">BEST OF COMMUNITY FORUMS</div>
+                        
+                        <div id="eyebrow">
+                            <a href="#signIn"  data-toggle="modal" data-target="#signInModal">Login</a> | Archives
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="newsletter col-lg-4">
-                <div class="row">
-                    <h4>Newsletter</h4>
-                    <hr>
+            
+            <div id="global_body" class="row">
+                <div class="container">
+                    <div class="col-lg-8 col-md-12">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+                            <li role="presentation" class="hidden-lg"><a href="#newsletter" aria-controls="newsletter" role="tab" data-toggle="tab">Newsletter</a></li>
+                            <li role="presentation"><a href="#viewed" aria-controls="viewed" role="tab" data-toggle="tab">Most Viewed</a></li>
+                            <li role="presentation"><a href="#commented" aria-controls="commented" role="tab" data-toggle="tab">Most Commented</a></li>
+                            <li role="presentation"><a href="#shared" aria-controls="shared" role="tab" data-toggle="tab">Most Shared</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="home">
+                                <div class="articles content">
+                                    
+                                </div>
+                            </div>
+
+                            <div role="tabpanel" class="tab-pane" id="newsletter">
+                                <div class="newsletters content">
+
+                                </div>
+                            </div>
+
+                            <div role="tabpanel" class="tab-pane" id="viewed">
+                                <div class="viewed content">
+
+                                </div>
+                            </div>
+
+                            <div role="tabpanel" class="tab-pane" id="commented">
+                                <div class="commented content">
+
+                                </div>
+                            </div>
+
+                            <div role="tabpanel" class="tab-pane" id="shared">
+                                <div class='shared content'>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 visible-lg">
+                        <h3>Newsletter</h3>
+                        <hr>
+                        
+                        <div class="newsletters content">
+                            
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        
-        <div id="global_footer" class="row">
-            <div class="container">
-                Filler content © Valve Corporation. All rights reserved.
+            
+            <div class="row">
+                <div class="container">
+                    <div id="global_footer" class="col-lg-12">
+                        Filler content © Valve Corporation. All rights reserved.
+                    </div>
+                </div>
             </div>
         </div>
         
@@ -182,10 +172,12 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <h4 class="modal-title" id="myModalLabel">Log In</h4>
                     </div>
+                    
                     <div class="modal-body">
                         <input type="text" class="form-control" placeholder="username">
                         <input type="password" class="form-control" placeholder="password">
                     </div>
+                    
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         <button type="button" class="btn btn-primary" data-dismiss="modal">Sign In</button>
